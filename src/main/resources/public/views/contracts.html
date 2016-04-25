@@ -1,0 +1,29 @@
+<div class="container pad-top">
+  <a ui-sref="newContract" class="btn-primary btn-lg nodecoration">Add New Contract</a>
+  <table class="table contracttable">
+      <tr>
+          <td><h3>All Contracts</h3></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>Name</td>
+          <td>Code</td>
+          <td>Description</td>
+          <td>Paid</td>
+          <td>Budget</td>
+          <td>Project</td>
+      </tr>
+      <tr ng-repeat="contract in contracts">
+          <td>{{contract.name}}</td>
+          <td>{{contract.code}}</td>
+          <td>{{contract.description}}</td>
+          <td>{{"$" + contract.paid}}</td>
+          <td>{{"$" + contract.budget}}</td>
+          <td>{{contract.projectName}}</td>
+          <td>
+              <a class="btn btn-primary" ui-sref="viewContract({id:contract.id})">View</a>
+              <a class="btn btn-danger"  ng-click="deleteContract(contract)">Delete</a>
+          </td>
+      </tr>
+  </table>
+</div>

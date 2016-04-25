@@ -3,6 +3,7 @@ package com.aconex.data;
 /**
  * Created by vlo on 4/17/2016.
  */
+
 public class Project {
 
     private Long id;
@@ -19,8 +20,8 @@ public class Project {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
+
 }

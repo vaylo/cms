@@ -1,29 +1,40 @@
 package com.aconex.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by vlo on 4/17/2016.
  */
 
 @Entity
-public class ContractorModel {
+@Table(name="CONTRACT")
+public class ContractModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "code")
     private String code;
+    @Column(name = "description")
     private String description;
+    @Column(name = "budget")
     private Integer budget;
+    @Column(name ="committed_cost")
     private Integer committedCost;
+    @Column(name = "forecast")
     private Integer forecast;
+    @Column(name="paid")
     private Integer paid;
+    @Column(name="completed_percentage")
     private Integer completePercentage;
+    @Column(name="vendor")
     private String vendor;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name ="PROJECT_ID")
+    private ProjectModel project;
 
 
     public Long getId() {
@@ -104,5 +115,16 @@ public class ContractorModel {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public ProjectModel getProject() {
+        return project;
+    }
+
+    public void setProject(ProjectModel projectModel) {
+        this.project = projectModel;
+        if (project.getContracts() != null && !projectModel.getContracts().contains(this)) {
+            projectModel.getContracts().add(this);
+        }
     }
 }

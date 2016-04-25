@@ -3,9 +3,10 @@ package com.aconex.data;
 /**
  * Created by vlo on 4/17/2016.
  */
-public class Contractor {
+public class Contract {
 
     private Long id;
+    private String projectName;
     private String name;
     private String code;
     private String description;
@@ -22,6 +23,14 @@ public class Contractor {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
     }
 
     public String getName() {
@@ -95,4 +104,5 @@ public class Contractor {
     public void setVendor(String vendor) {
         this.vendor = vendor;
     }
+
 }

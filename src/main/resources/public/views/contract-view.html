@@ -1,0 +1,47 @@
+<div class="container pad-top">
+  <table class="table contracttable">
+
+      <tr>
+          <td colspan="2"><h3>{{contract.projectName}}::Details for {{contract.name}}</h3></td>
+      </tr>
+      <tr>
+          <td>Name</td>
+          <td>{{contract.name}}</td>
+      </tr>
+      <tr>
+          <td>Description</td>
+          <td>{{contract.description}}</td>
+      </tr>
+      <tr>
+          <td>Code</td>
+          <td>{{contract.code}}</td>
+      </tr>
+      <tr>
+          <td>Budget($)</td>
+          <td>{{contract.budget}}</td>
+      </tr>
+      <tr>
+          <td>Committed Cost($)</td>
+          <td>{{contract.committedCost}}</td>
+      </tr>
+      <tr>
+          <td>Forecast($)</td>
+          <td>{{contract.forecast}}</td>
+      </tr>
+      <tr>
+          <td>Paid($)</td>
+          <td>{{contract.paid}}</td>
+      </tr>
+      <tr>
+          <td>Completed Percentage(%)</td>
+          <td>{{contract.completePercentage}}</td>
+      </tr>
+      <tr>
+          <td>Vendor</td>
+          <td>{{contract.vendor}}</td>
+      </tr>
+  </table>
+  <div>
+      <a class="btn btn-primary" ui-sref="editContract({id:contract.id})">Edit</a>
+  </div>
+</div>

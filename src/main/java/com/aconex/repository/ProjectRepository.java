@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface ProjectRepository extends JpaRepository<ProjectModel, Long> {
 
-
+    ProjectModel findByName(String name);
 }

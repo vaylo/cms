@@ -1,7 +1,7 @@
 package com.aconex.repository;
 
 import com.aconex.Application;
-import com.aconex.model.ContractorModel;
+import com.aconex.model.ContractModel;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,14 +20,14 @@ import static org.hamcrest.core.Is.is;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(Application.class)
-public class ContractorRepositoryIntegrationTest {
+public class ContractRepositoryIntegrationTest {
 
     @Autowired
-    private ContractorRepository contractorRepository;
+    private ContractRepository contractRepository;
 
     @Test
     public void testFinalAll() {
-        List<ContractorModel> contractors = contractorRepository.findAll();
+        List<ContractModel> contractors = contractRepository.findAll();
 
         assertThat(contractors.size(), is(greaterThanOrEqualTo(0)));
     }
