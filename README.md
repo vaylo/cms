@@ -5,23 +5,25 @@ sense of how much money has been spent on a project, and how much money is expec
 be received by the organization performing the work. Typically, this area is called Contract Management.
 
 Contract managers have several areas of interest:
-● Budgets (how much money did I expect to spend/receive)
-● Commitments (how much money have I committed to spending/receiving)
-● Forecasts (how much money in the future will I have to spend/receive)
-● Payments (how much money has actually left/arrived in my bank account)
+ - Budgets (how much money did I expect to spend/receive)
+ - Commitments (how much money have I committed to spending/receiving)
+ - Forecasts (how much money in the future will I have to spend/receive)
+ - Payments (how much money has actually left/arrived in my bank account)
 
 The combination of these items is sufficient to get a sense of the performance of the project
 from a financial perspective.
 
 Deliverable
+
 Our goal is to be able to display a list of contracts with some detail given a set of initial dummy
 data. Some additional details:
-● The list should be presented in a tabular format
-● Each contract should have a “Code”, “Description”, “Budget ($)”, “Committed Cost ($)”,
+
+- The list should be presented in a tabular format
+- Each contract should have a “Code”, “Description”, “Budget ($)”, “Committed Cost ($)”,
 “Forecast ($)”, “Paid ($)”, “Complete (%)”, and “Vendor” field. Unless otherwise
 indicated, the fields are either numerical, or text based.
-● A user will want to edit the values in some way and expect them to stick around
-● The user should know what project they are on. Consequently, a project consists of at
+- A user will want to edit the values in some way and expect them to stick around
+- The user should know what project they are on. Consequently, a project consists of at
 least a name. A project has many contracts. You should place the project name
 somewhere on the page.
 
@@ -38,21 +40,34 @@ This simple web application use of the following technologies:
 - HTML5, CSS3, and JavaScript
 
 
-How to Run
+How to Run?
 
 Steps:
-1. Clone this project and import into your IDE(Eclipse, IntelliJ or Spring STS, etc...)
-2. After it is imported, navigate into /src/java/com/aconex/ and run Application.java as Application from the IDE.
-3. A spring boot application should be running.
 
-View UI:
-1. Type http://localhost:8080/index.html on browser to view
+- Clone this project and import into your IDE(Eclipse, IntelliJ or Spring STS, etc...)
+- After it is imported, navigate into /src/java/com/aconex/ and run Application.java as Application from the IDE.
+- A spring boot application should be running.
+
+How to View UI?
+
+- Type http://localhost:8080/index.html on browser to view
 
 
-View database:
+How to View database?
 
 1. Type http://localhost:8080/h2 onto browser address location after the application runs
 2. make sure the JDBC URL is jdbc:h2:~/cms and click on "CONNECT" to get into the database
+
+
+How to Package?
+
+Requirement: installation of Maven 3.0 or above is required
+
+- Open a window prompt and cd to the project directory
+- run "mvn package" to create the package
+- run "java -jar <package>.jar" for example "java -jar target/cms-1.0-SNAPSHOT.jar" to start the application
+
+
 
 
 
