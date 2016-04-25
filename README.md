@@ -66,6 +66,11 @@ Requirement: installation of Maven 3.0 or above is required
 - Open a window prompt and cd to the project directory
 - run "mvn package" to create the package
 - run "java -jar <package>.jar" for example "java -jar target/cms-1.0-SNAPSHOT.jar" to start the application
+- a version(cms.jar) is also available on package directory
+
+View aconex.doc in doc folder for screenshots.
+
+
 
 
 
