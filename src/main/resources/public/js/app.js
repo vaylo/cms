@@ -46,22 +46,25 @@
 				}
 			})
 			.state('contracts',{
-	        url:'/contracts',
-	        templateUrl: viewsPrefix + 'contracts.html',
-	        controller:'ContractListController'
-	    }).state('viewContract',{
-	       url:'/contracts/:id/view',
-	       templateUrl: viewsPrefix + 'contract-view.html',
-	       controller:'ContractViewController'
-	    }).state('newContract',{
-	        url:'/contracts/new',
-	        templateUrl: viewsPrefix + 'contract-add.html',
-	        controller:'ContractCreateController'
-	    }).state('editContract',{
-	        url:'/contracts/:id/edit',
-	        templateUrl: viewsPrefix + 'contract-edit.html',
-	        controller:'ContractEditController'
-	    })
+				url:'/contracts',
+				templateUrl: viewsPrefix + 'contracts.html',
+				controller:'ContractListController'
+			})
+			.state('viewContract',{
+			   url:'/contracts/:id/view',
+			   templateUrl: viewsPrefix + 'contract-view.html',
+			   controller:'ContractViewController'
+			})
+			.state('newContract',{
+				url:'/contracts/new',
+				templateUrl: viewsPrefix + 'contract-add.html',
+				controller:'ContractCreateController'
+			})
+			.state('editContract',{
+				url:'/contracts/:id/edit',
+				templateUrl: viewsPrefix + 'contract-edit.html',
+				controller:'ContractEditController'
+			})
 	})
 	.directive('updateTitle', ['$rootScope', '$timeout',
 		function($rootScope, $timeout) {

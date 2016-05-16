@@ -22,9 +22,12 @@ angular.module('app.controllers', []).controller('ContractListController', funct
     };
 }).controller('ContractEditController', function($scope, $state, $stateParams, Contract) {
     $scope.updateContract = function() { //Update the edited contract. Issues a PUT to /api/v1/contracts/:id
+
       $scope.contract.$update(function() {
         $state.go('contracts'); // on success go back to the list i.e. contracts state.
-    });
+      }, function(res) {
+          $scope.errorMessage = res.data['errorMessage'];
+      });
 };
 
 $scope.loadContract = function() { //Issues a GET request to /api/v1/contracts/:id to get a contract to update

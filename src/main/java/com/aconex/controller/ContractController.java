@@ -6,16 +6,21 @@ import com.aconex.model.ProjectModel;
 import com.aconex.repository.ContractRepository;
 import com.aconex.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by vlo on 4/17/2016.
  */
 
 @RestController
+//@CrossOrigin(origins = "*", methods = {RequestMethod.OPTIONS,RequestMethod.GET,RequestMethod.POST, RequestMethod.PUT,RequestMethod.DELETE})
 @RequestMapping("api/v1/")
 public class ContractController {
 
@@ -40,7 +45,7 @@ public class ContractController {
     }
 
     @RequestMapping(value="contracts", method = RequestMethod.POST)
-    public Contract create(@RequestBody Contract contract) {
+    public ResponseEntity<Contract> create(@RequestBody Contract contract) {
 
         String projectName = contract.getProjectName();
 
@@ -55,8 +60,14 @@ public class ContractController {
         ContractModel model = convertToModel(contract);
         model.setProject(existingProject);
 
-        ContractModel cm = contractorRepository.saveAndFlush(model);
-        return convertToContract(cm);
+        try {
+            ContractModel cm = contractorRepository.saveAndFlush(model);
+            return new ResponseEntity<Contract>(convertToContract(cm), HttpStatus.OK);
+
+        } catch (Exception e) {
+            return new ResponseEntity<Contract>(HttpStatus.BAD_REQUEST);
+        }
+
     }
 
     @RequestMapping(value="contracts/{id}", method = RequestMethod.GET)
@@ -65,7 +76,7 @@ public class ContractController {
     }
 
     @RequestMapping(value="contracts/{id}", method = RequestMethod.PUT)
-    public Contract update(@PathVariable Long id, @RequestBody Contract contract) {
+    public ResponseEntity<Object> update(@PathVariable Long id, @RequestBody Contract contract) {
 
         ContractModel existingContractorModel = contractorRepository.findOne(id);
 
@@ -79,8 +90,17 @@ public class ContractController {
         existingContractorModel.setPaid(contract.getPaid());
         existingContractorModel.setVendor(contract.getVendor());
 
+        try {
+            ContractModel cm = contractorRepository.saveAndFlush(existingContractorModel);
+            return new ResponseEntity<Object>(convertToContract(cm), HttpStatus.OK);
 
-       return convertToContract(contractorRepository.saveAndFlush(existingContractorModel));
+        } catch (Exception e) {
+            Map<String, String> map = new HashMap<String, String>();
+            map.put("errorMessage", "Duplicate contract code: " + existingContractorModel.getCode());
+            return new ResponseEntity<Object>(map, HttpStatus.BAD_REQUEST);
+        }
+
+      // return convertToContract(contractorRepository.saveAndFlush(existingContractorModel));
 
     }
     @RequestMapping(value="contracts/{id}", method = RequestMethod.DELETE)
